@@ -25,11 +25,14 @@ def arrowDenied(value=-0):
     else: arrow = ImageTk.PhotoImage(Image.open(grayArrow))
     return arrow
 
-for i in range(3):
+for i in range(4):
+    counter 	= 0
     for j in range(4):
-        label = tk.Label(root, text=tabel.iloc[i][j]).grid(row=i,column=j)
-        print(type(tabel.iloc[i][j]))
-        # myimg1 = arrowDenied(tabel.loc[i][j])
-        # panel12 = tk.Label(root, image = myimg1).grid(row=i, column=j+1)
+        label = tk.Label(root, text=tabel.iloc[i][j]).grid(row=i,column=counter, sticky='news')
+        counter+=1
+        myimg1 = arrowDenied(tabel.iloc[i][j])
+        panel12 = tk.Label(root, image = myimg1).grid(row=i, column=counter)
+        counter+=1
+        
 
 root.mainloop()
