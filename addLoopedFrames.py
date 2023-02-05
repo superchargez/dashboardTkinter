@@ -34,10 +34,11 @@ for i in range(4):
         bg=colours[j], relief=RAISED, borderwidth=5, cursor="circle red")
         frames.append(frame)
         frame.grid(row=i,column=j, sticky="EW")
-        Label(frames[counter], text=rows[j], borderwidth=0, cursor=cursor[i]).grid(row=0,column=1, sticky="EW")
-        Label(frames[counter], image=greenDown(), borderwidth=0, cursor=cursor[i]).grid(row=i,column=j, sticky="EW")
+        for k in range(4):
+            Label(frames[counter], text=columns[k], borderwidth=0, cursor=cursor[i]).grid(row=0,column=k+1, sticky="EW")
+            Label(frames[counter], text=rows[k], borderwidth=0, cursor=cursor[i]).grid(row=k+1,column=0, sticky="EW")
+        
+            Label(frames[counter], image=greenDown(), borderwidth=0, cursor=cursor[i]).grid(row=i+1,column=j*2+2, sticky="EW")
 
         counter+=1
-
-print(frames)
 root.mainloop()
