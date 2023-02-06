@@ -23,6 +23,7 @@ def greenDown(value=0):
 # root.config(padx=10, pady=10)
 root.title("KPI Dashboard")
 products = ['xDSL', 'FF', 'Voice', 'IPTV']
+calls = ['DENIED', "REGISTERED", "REPEAT", "MTTR"]
 colours = ["powder blue", 'bisque', "RosyBrown1", "khaki2", "light sea green"]
 cursor = ['circle red', 'sizing red', 'target red', 'exchange red']
 rows, columns = ['North', 'South', 'Central', 'National'], ['Current', 'Last Month', 'Last Year', 'Target']
@@ -34,11 +35,13 @@ for i in range(4):
         bg=colours[j], relief=RAISED, borderwidth=5, cursor="circle red")
         frames.append(frame)
         frame.grid(row=i,column=j, sticky="EW")
+        Label(frames[counter], text=calls[i], bg=colours[j], borderwidth=0, cursor=cursor[i]).grid(row=0,column=0, sticky="EW")
         for k in range(4):
-            Label(frames[counter], text=columns[k], borderwidth=0, cursor=cursor[i]).grid(row=0,column=k+1, sticky="EW")
-            Label(frames[counter], text=rows[k], borderwidth=0, cursor=cursor[i]).grid(row=k+1,column=0, sticky="EW")
-        
-            Label(frames[counter], image=greenDown(), borderwidth=0, cursor=cursor[i]).grid(row=i+1,column=j*2+2, sticky="EW")
+            Label(frames[counter], text=columns[k], bg=colours[j], borderwidth=0, cursor=cursor[i]).grid(row=0,column=k+1, sticky="EW")
+            Label(frames[counter], text=rows[k], borderwidth=0, bg=colours[j], cursor=cursor[i]).grid(row=k+1,column=0, sticky="EW")
+            
+            for m in range(4):
+                Label(frames[counter], image=greenDown(), borderwidth=5, bg=colours[j], cursor=cursor[i]).grid(row=i+1,column=j*2+2, sticky="EW")
 
         counter+=1
 root.mainloop()
